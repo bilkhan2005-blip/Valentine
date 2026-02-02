@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valentine 💛</title>
+
+<style>
+/* ===== BACKGROUND ===== */
+body {
+  margin: 0;
+  height: 100vh;
+  background-color: #ffeef4;
+  background-image:
+    radial-gradient(circle at 20% 30%, #9bdc8a 20px, transparent 21px),
+    radial-gradient(circle at 70% 60%, #9bdc8a 20px, transparent 21px),
+    radial-gradient(circle at 40% 80%, #9bdc8a 20px, transparent 21px);
+  background-size: 200px 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Comic Sans MS', cursive;
+}
+
+.container {
+  text-align: center;
+}
+
+/* ===== MINION BODY ===== */
+.minion {
+  position: relative;
+  width: 180px;
+  height: 300px;
+  background: #FFD500;
+  border-radius: 90px;
+  margin: 0 auto 20px;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+/* ===== GOGGLES ===== */
+.goggles {
+  position: absolute;
+  top: 55px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.eye {
+  width: 60px;
+  height: 60px;
+  background: #fff;
+  border: 6px solid #999;
+  border-radius: 50%;
+  position: relative;
+}
+
+.pupil {
+  width: 22px;
+  height: 22px;
+  background: #000;
+  border-radius: 50%;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  animation: look 3s infinite;
+}
+
+@keyframes look {
+  0%,100% { transform: translateX(0); }
+  50% { transform: translateX(10px); }
+}
+
+/* ===== MOUTH ===== */
+.mouth {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70px;
+  height: 35px;
+  border-bottom: 5px solid #000;
+  border-radius: 0 0 70px 70px;
+}
+
+/* ===== ARMS ===== */
+.arm {
+  position: absolute;
+  width: 80px;
+  height: 15px;
+  background: #FFD500;
+  top: 170px;
+}
+
+.arm.left {
+  left: -60px;
+  transform: rotate(-20deg);
+}
+
+.arm.right {
+  right: -60px;
+  transform: rotate(20deg);
+}
+
+/* ===== HEART ===== */
+.heart {
+  position: absolute;
+  top: 165px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-45deg);
+  width: 45px;
+  height: 45px;
+  background: red;
+  animation: pulse 1.2s infinite;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  background: red;
+  border-radius: 50%;
+}
+
+.heart::before {
+  top: -22px;
+  left: 0;
+}
+
+.heart::after {
+  left: 22px;
+  top: 0;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1) rotate(-45deg); }
+  50% { transform: scale(1.2) rotate(-45deg); }
+  100% { transform: scale(1) rotate(-45deg); }
+}
+
+/* ===== TEXT & BUTTONS ===== */
+h1 {
+  color: #c4002f;
+}
+
+.buttons {
+  margin-top: 10px;
+  position: relative;
+  height: 80px;
+}
+
+button {
+  padding: 14px 28px;
+  font-size: 18px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+#yes {
+  background: #ff4d6d;
+  color: white;
+}
+
+#no {
+  background: #aaa;
+  color: white;
+  position: absolute;
+  left: 55%;
+}
+</style>
+</head>
+
+<body>
+<div class="container" id="main">
+
+  <div class="minion">
+    <div class="goggles">
+      <div class="eye"><div class="pupil"></div></div>
+      <div class="eye"><div class="pupil"></div></div>
+    </div>
+
+    <div class="mouth"></div>
+
+    <div class="arm left"></div>
+    <div class="arm right"></div>
+
+    <div class="heart"></div>
+  </div>
+
+  <h1>Will you be my Valentine? 💖</h1>
+
+  <div class="buttons">
+    <button id="yes" onclick="yesClicked()">Yes 💛</button>
+    <button id="no" onmouseover="escapeNo()">No 🙈</button>
+  </div>
+</div>
+
+<script>
+function escapeNo() {
+  const btn = document.getElementById("no");
+  btn.style.left = Math.random() * 80 + "%";
+  btn.style.top = Math.random() * 40 + "px";
+}
+
+function yesClicked() {
+  document.getElementById("main").innerHTML = `
+    <h1>YAAAY 🥑💖</h1>
+    <h2>You just made a Minion very happy!</h2>
+  `;
+}
+</script>
+
+</body>
+</html>
